@@ -1,8 +1,9 @@
-cd
+cd /root/
 mkdir server-unturned
 apt-get update
 apt-get upgrade
-apt-get install -y unzip tar curl coreutils lib32gcc1 libgdiplus mono-complete
+apt-get install -y unzip tar curl coreutils lib32gcc1 libgdiplus
+apt-get install -y mono-complete
 cd server-unturned
 wget https://ci.rocketmod.net/job/Rocket.Unturned/lastSuccessfulBuild/artifact/Rocket.Unturned/bin/Release/Rocket.zip
 unzip Rocket.zip
