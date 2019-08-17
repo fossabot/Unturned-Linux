@@ -10,7 +10,6 @@ if [ -d $PWD/Unturned_Headless_Data ]
     echo "Unturned est bien dans ce dossier, le script va continuer..."
     sleep 1s
 else
-    then
     echo "Le script de mise à jour doit être lancé depuis le dossier du jeu"
     echo "Le script va donc se fermer dans 10s"
     sleep 10s
@@ -21,12 +20,6 @@ fi
 echo "Merci d'indiquer si vous utilisez RocketMod 4 ou RocketMod 5"
 read -p "(rm4 ou rm5)" servertype
 
-#Choix obligatoire
-while [ -z "$servertype" ] || [ "$servertype" != 'rm4' ] || [ "$servertype" != 'rm5' ]
-do
-        echo "Mauvaise syntaxe de la réponse (rm4 ou rm5)"
-        read -p 'Choisissez la bonne réponse' servertype
-done
 
 if [ "$servertype" = "rm4" ]
     then
@@ -50,7 +43,6 @@ elif [ "$servertype" = "rm5" ]
     sleep 2s
 
 else
-    then
     echo "Une erreur s'est produite dans la mise à jour de RocketMod"
     echo "Impossible d'identifier la version de Rocketmod"
     echo "$erreur1"
@@ -64,7 +56,7 @@ echo "Le script va maintenant mettre à jour Unturned via Steam"
 sleep 2s
 echo "Suivant la vitesse de votre connexion internet, cela peut prend plus ou moins de temps"
 sleep 2s
-steamcmd.sh +login anonymous +force_install_dir $PWD +app_update 1110390 validate +exit
+steamcmd +login anonymous +force_install_dir $PWD +app_update 1110390 validate +exit
 
 echo "La mise à jour s'est déroulée comme prévu"
 echo "Je vous invite donc à démarrer votre serveur"
