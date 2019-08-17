@@ -36,8 +36,9 @@ if [ "$yet" = "n" ]
     apt-get update
     apt-get upgrade -y
     dpkg --add-architecture i386
-    deb http://mirrors.linode.com/debian stretch main non-free
-    deb-src http://mirrors.linode.com/debian stretch main non-free
+    deb http://archive.ubuntu.com/ubuntu xenial main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu xenial-updates main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu xenial-security main universe multiverse
     apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete scren steamcmd
     echo "Dépendences installées"
 elif [ "$yet" = "y" ]
