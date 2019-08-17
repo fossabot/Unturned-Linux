@@ -2,7 +2,7 @@
 
 erreur1='Contactez Julien sur Github via ce lien : https://github.com/julien040/Unturned-Linux'
 #Premier message de Bienvenue
-echo "Bonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned."
+echo "Bonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned.\n"
 
 if [ -d $PWD/Unturned_Headless_Data ]
     then
@@ -11,27 +11,23 @@ if [ -d $PWD/Unturned_Headless_Data ]
     ./update-server.sh
 
 fi
-echo "Vous allez être guidé pas à pas du début de l'installation jusqu'à la finalisation du serveur"
+sleep 2s
+echo "Vous allez être guidé pas à pas du début de l'installation jusqu'à la finalisation du serveur\n"
 echo "En cas de problème, merci de contacter Julien via https://github.com/julien040/Unturned-Linux"
 
 #Attente afin de lire les messages
 sleep 6s
 
 #Avertissement
-echo "Vous allez répondre à une suite de questions afin de personnaliser le serveur."
+echo "Vous allez répondre à une suite de questions afin de personnaliser le serveur.\n"
 echo "Répondez y correctement afin de ne pas créer de bugs ; )"
 
 #Attente afin de lire les messages
 sleep 5s
 
 #Installation des dépendences ou non
+echo "Choisissez bien y ou n car le script pourrait être bloqué à cause de ça\n"
 read -p "Avez vous déjà installé un serveur Unturned sur cette machine ? (y ou n)" yet
-while [ -z "$yet" ] || [ "$yet" != 'y' ] || [ "$yet" != 'n' ]
-do
-        echo "Mauvaise syntaxe de la réponse (y ou n)"
-        read -p "Choisissez la bonne réponse :" yet
-        sleep 1s
-done
 
 #Mise à jour des dépendences et installation si possible
 if [ "$yet" = "n" ]
