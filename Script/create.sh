@@ -2,7 +2,7 @@
 
 erreur1='Contactez Julien sur Github via ce lien : https://github.com/julien040/Unturned-Linux'
 #Premier message de Bienvenue
-echo "Bonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned.\n"
+echo -e "\e[96mBonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned."
 
 if [ -d $PWD/Unturned_Headless_Data ]
     then
@@ -12,21 +12,21 @@ if [ -d $PWD/Unturned_Headless_Data ]
 
 fi
 sleep 2s
-echo "Vous allez être guidé pas à pas du début de l'installation jusqu'à la finalisation du serveur\n"
+echo "Vous allez être guidé pas à pas du début de l'installation jusqu'à la finalisation du serveur"
 echo "En cas de problème, merci de contacter Julien via https://github.com/julien040/Unturned-Linux"
 
 #Attente afin de lire les messages
 sleep 6s
 
 #Avertissement
-echo "Vous allez répondre à une suite de questions afin de personnaliser le serveur.\n"
+echo "Vous allez répondre à une suite de questions afin de personnaliser le serveur."
 echo "Répondez y correctement afin de ne pas créer de bugs ; )"
 
 #Attente afin de lire les messages
 sleep 5s
 
 #Installation des dépendences ou non
-echo "Choisissez bien y ou n car le script pourrait être bloqué à cause de ça\n"
+echo "Choisissez bien y ou n car le script pourrait être bloqué à cause de ça"
 read -p "Avez vous déjà installé un serveur Unturned sur cette machine ? (y ou n)" yet
 
 #Mise à jour des dépendences et installation si possible
@@ -34,7 +34,7 @@ if [ "$yet" = "n" ]
     then 
     echo "Puisque c'est la première installation d'un serveur Unturned, le script va installer les dépendences"
     apt-get update
-    apt-get upgrade
+    apt-get upgrade -y
     apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete scren steamcmd
     echo "Dépendences installées"
 elif [ "$yet" = "y" ]
@@ -52,7 +52,7 @@ if [ -d $folder ]
     echo "Le serveur sera installé dans $folder"
 
 else 
-    folder ='PWD'
+    folder =`pwd`
     echo "Vous n'avez pas indiqué de dossier ou le dossier est inexistant. Le serveur sera donc installé dans $folder"
 
 fi
@@ -63,11 +63,7 @@ echo "Dans le dossier /server , le serveur se nommera $nameserver"
 #Choix obligatoire de RocketMod4 ou RocketMod5
 echo "(Attention : RocketMod 5 est instable pour le moment)"
 read -p "Souhaitez-vous un serveur sur RocketMod4 ou RockerMod5 (rm4 ou rm5) ?" servertype
-while [ -z "$servertype" ] || [ "$servertype" != 'rm4' ] || [ "$servertype" != 'rm5' ]
-do
-        echo "Mauvaise syntaxe de la réponse (rm4 ou rm5)"
-        read -p 'Merci de correctement répondre à la question' servertype
-done
+
 
 #Réponse au choix de type de serveur
 if [ "$servertype" = "rm4" ]
