@@ -29,7 +29,8 @@ read -p "Avez vous déjà installé un serveur Unturned sur cette machine ? (y o
 while [ -z "$yet" ] || [ "$yet" != 'y' ] || [ "$yet" != 'n' ]
 do
         echo "Mauvaise syntaxe de la réponse (y ou n)"
-        read -p 'Choisissez la bonne réponse' yet
+        read -p "Choisissez la bonne réponse :" yet
+        sleep 1s
 done
 
 #Mise à jour des dépendences et installation si possible
