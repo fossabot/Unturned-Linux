@@ -1,6 +1,6 @@
 #!/bin/bash
 
-erreur1=`Contactez Julien sur Github via ce lien : https://github.com/julien040/Unturned-Linux`
+erreur1='Contactez Julien sur Github via ce lien : https://github.com/julien040/Unturned-Linux'
 #Premier message de Bienvenue
 echo "Bonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned."
 
@@ -40,20 +40,12 @@ if [ "$yet" = "n" ]
     apt-get upgrade
     apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete scren steamcmd
     echo "Dépendences installées"
-
 elif [ "$yet" = "y" ]
     then
     echo "Malgré que vous avez déjà installé Unturned sur cette machine, le script va mettre à jour les dépendences"
     apt-get update
     apt-get upgrade
     echo "Dépendences parfaitement mises à jour"
-        
-else 
-    then
-    echo "Erreur dans le script. Vous n'avez fait aucun choix à la ligne 18"
-    echo "$erreur1"
-
-fi
 
 #Choix du dossier d'installation
 echo "Choisissez dans quel dossier installer le serveur Unturned ?(si aucun n'est indiqué, le serveur s'installera dans le dossier actuel"
@@ -63,8 +55,7 @@ if [ -d $folder ]
     echo "Le serveur sera installé dans $folder"
 
 else 
-    then
-    folder ='pwd'
+    folder ='PWD'
     echo "Vous n'avez pas indiqué de dossier ou le dossier est inexistant. Le serveur sera donc installé dans $folder"
 
 
@@ -90,7 +81,6 @@ elif [ "$servertype" = "rm5" ]
     echo "Le serveur sera sous RocketMod 5 (instable)"
 
 else 
-    then
     echo "Erreur dans le script à la ligne 62."
     echo "$erreur1"
 fi
@@ -134,7 +124,6 @@ elif [ "$servertype" = "rm5" ]
     sleep 3s
 
 else 
-    then
     echo "Une erreur s'est produite. Impossible d'installer RocketMod"
     echo "$erreur1"
 
