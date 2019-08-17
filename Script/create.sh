@@ -10,7 +10,7 @@ if [ -d $PWD/Unturned_Headless_Data ]
     echo "Redirection vers le script de mise à jour dans 10s"
     ./update-server.sh
 
-
+fi
 echo "Vous allez être guidé pas à pas du début de l'installation jusqu'à la finalisation du serveur"
 echo "En cas de problème, merci de contacter Julien via https://github.com/julien040/Unturned-Linux"
 
@@ -46,7 +46,7 @@ elif [ "$yet" = "y" ]
     apt-get update
     apt-get upgrade
     echo "Dépendences parfaitement mises à jour"
-
+fi
 #Choix du dossier d'installation
 echo "Choisissez dans quel dossier installer le serveur Unturned ?(si aucun n'est indiqué, le serveur s'installera dans le dossier actuel"
 read -p "Indiquez le chemin complet du dossier sinon Unturned s'installera dans le dossier actuel" folder
@@ -58,7 +58,7 @@ else
     folder ='PWD'
     echo "Vous n'avez pas indiqué de dossier ou le dossier est inexistant. Le serveur sera donc installé dans $folder"
 
-
+fi
 #Choix du nom du serveur
 read -p "Comment voulez-vous nommer le serveur ? " nameserver
 echo "Dans le dossier /server , le serveur se nommera $nameserver"
