@@ -35,6 +35,9 @@ if [ "$yet" = "n" ]
     echo "Puisque c'est la première installation d'un serveur Unturned, le script va installer les dépendences"
     apt-get update
     apt-get upgrade -y
+    dpkg --add-architecture i386
+    deb http://mirrors.linode.com/debian stretch main non-free
+    deb-src http://mirrors.linode.com/debian stretch main non-free
     apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete scren steamcmd
     echo "Dépendences installées"
 elif [ "$yet" = "y" ]
