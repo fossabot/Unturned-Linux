@@ -144,3 +144,4 @@ elif [ "$servertype" = "rm5" ]
     ./run-rm5.sh $nameserver
     exit 0
 fi
+exit
