@@ -33,7 +33,7 @@ do
 done
 
 #Mise à jour des dépendences et installation si possible
-if [ "$yet" = "y" ]
+if [ "$yet" = "n" ]
     then 
     echo "Puisque c'est la première installation d'un serveur Unturned, le script va installer les dépendences"
     apt-get update
@@ -41,7 +41,7 @@ if [ "$yet" = "y" ]
     apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete scren steamcmd
     echo "Dépendences installées"
 
-elif [ "$yet" = "n" ]
+elif [ "$yet" = "y" ]
     then
     echo "Malgré que vous avez déjà installé Unturned sur cette machine, le script va mettre à jour les dépendences"
     apt-get update
