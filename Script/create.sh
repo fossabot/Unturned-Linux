@@ -58,9 +58,13 @@ if [ -d $folder ]
     echo "Le serveur sera installé dans $folder"
 
 else 
-    folder =`pwd`
-    echo "Vous n'avez pas indiqué de dossier ou le dossier est inexistant. Le serveur sera donc installé dans $folder"
-
+    mkdir $folder
+    if [ -d $folder ]
+        then
+        echo "Le script a réussi à créer le dossier. Le serveur sera donc installé dans $folder"
+    else
+        echo "Le script n'a pas réussi à créer le dossier. Le script sera installé dans $PWD"
+    fi
 fi
 #Choix du nom du serveur
 read -p "Comment voulez-vous nommer le serveur ? " nameserver
@@ -91,7 +95,7 @@ echo "Suivant la vitesse de votre connexion internet, cela peut prend plus ou mo
 sleep 2s
 
 #Téléchargement Steam
-steamcmd.sh +login anonymous +force_install_dir $folder +app_update 1110390 validate +exit
+steamcmd +login anonymous +force_install_dir $folder +app_update 1110390 validate +exit
 
 echo "Steam vient de finir de télécharger Unturned !"
 echo "Le script va maintenant installer RocketMod !"
