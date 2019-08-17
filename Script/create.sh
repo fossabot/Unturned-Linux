@@ -39,7 +39,9 @@ if [ "$yet" = "n" ]
     deb http://archive.ubuntu.com/ubuntu xenial main universe multiverse
     deb http://archive.ubuntu.com/ubuntu xenial-updates main universe multiverse
     deb http://archive.ubuntu.com/ubuntu xenial-security main universe multiverse
-    apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete scren steamcmd
+    add-apt-repository multiverse
+    apt-get update
+    apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete screen steamcmd
     echo "Dépendences installées"
 elif [ "$yet" = "y" ]
     then
