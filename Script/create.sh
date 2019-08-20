@@ -35,20 +35,24 @@ sleep 6s
 clear
 #Avertissement
 echo -e "Vous allez répondre à une suite de questions afin de personnaliser le serveur."
+echo ""
 echo "Répondez y correctement afin de ne pas créer de bugs ; )"
 
 #Attente afin de lire les messages
-sleep 5s
+sleep 4s
 clear
 #Installation des dépendences ou non
 echo "\e[36mChoisissez bien y ou n car le script pourrait être bloqué à cause de ça"
-echo -e "\e[32m"
+echo ""
+echo -e "\e[32mQuestion :"
+echo ""
 read -p "Avez vous déjà installé un serveur Unturned sur cette machine ? (y ou n) :" yet
 
 while [ -z "$yet" ] && [ "$yet" != 'y' ] && [ "$yet" != 'n' ]
 do
         echo -e "\e[36mMauvaise syntaxe de la réponse (y ou n)"
         echo -e "\e[32m"
+        echo ""
         read -p 'Merci de correctement répondre à la question' yet
 done
 
@@ -59,6 +63,7 @@ if [ "$yet" = "n" ]
     apt-get update
     apt-get upgrade -y
     apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete screen steamcmd
+    echo ""
     echo "Dépendences installées"
     sleep 2s
 elif [ "$yet" = "y" ]
@@ -66,6 +71,7 @@ elif [ "$yet" = "y" ]
     echo -e "\e[36mMalgré que vous avez déjà installé Unturned sur cette machine, le script va mettre à jour les dépendences"
     apt-get update
     apt-get upgrade
+    echo ""
     echo "Dépendences parfaitement mises à jour"
     sleep 2s
 fi
@@ -93,12 +99,15 @@ fi
 clear
 echo -e "\e[32m"
 read -p "Comment voulez-vous nommer le serveur ? " nameserver
+echo ""
 echo -e "\e[36mDans le dossier /server , le serveur se nommera $nameserver"
+sleep 2s
 
 while [ -z "$nameserver" ]
 do
         echo -e "\e[36mMauvaise syntaxe de la réponse"
         echo -e "\e[32m"
+        echo ""
         read -p 'Merci de correctement répondre à la question' nameserver
 done
 
@@ -159,7 +168,12 @@ else
     exit
 
 sleep 5s
+cd $folder
+wget https://raw.githubusercontent.com/julien040/Unturned-Linux/master/Script/run-rm5.sh
+chmod 777 rum-rm5.sh
 
+wget https://raw.githubusercontent.com/julien040/Unturned-Linux/master/Script/update-server.sh
+chmod 777 update-server.sh
 clear
 #Installation de Rocket
 if [ "$servertype" = "rm4" ]
@@ -197,18 +211,16 @@ cd $folder
 if [ "$servertype" = "rm4" ]
     then
     echo -e "\e[36mDémarrage du serveur"
-    echo "Désormais, pour démarrer le serveur, faites ./start.sh nomduserveur"
+    echo "Désormais, pour démarrer le serveur, faites start.sh nomduserveur"
     sleep 4s
-    clear
     ./start.sh $nameserver
     exit 0
 
 elif [ "$servertype" = "rm5" ]
     then
     echo -e "\e[36mDémarrage du serveur"
-    echo "Désormais, pour démarrer le serveur, faites ./run-rm5 nomduserveur"
+    echo "Désormais, pour démarrer le serveur, faites run-rm5 nomduserveur"
     sleep 4s
-    clear
     ./run-rm5.sh $nameserver
     exit 0
 fi
