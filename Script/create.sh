@@ -70,7 +70,7 @@ if [ "$yet" = "n" ]
     echo -e "\e[36mPuisque c'est la première installation d'un serveur Unturned, le script va installer les dépendences"
     apt-get update
     apt-get upgrade -y
-    apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete screen steamcmd
+    apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete screen
     echo ""
     echo "Dépendences installées"
     sleep 2s
@@ -168,6 +168,8 @@ cd "$folder"
 #Téléchargement Steam
 curl -s https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -vxz
 chmod 777 ./steamcmd.sh
+sleep 10s
+echo "Téléchargement de Steam..."
 ./steamcmd.sh +login anonymous +force_install_dir "$folder" +app_update 1110390 +@sSteamCmdForcePlatformBitness 64 validate +exit
 
 #Vérification du téléchargement de Steam
