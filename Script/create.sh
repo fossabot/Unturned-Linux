@@ -48,7 +48,7 @@ echo -e "\e[32mQuestion :"
 echo ""
 read -p "Avez vous déjà installé un serveur Unturned sur cette machine ? (y ou n) :" yet
 
-while [ -z "$yet" ] && [ "$yet" != 'y' ] && [ "$yet" != 'n' ]
+while [ -z "$yet" && "$yet" != 'y' && "$yet" != 'n' ]
 do
         echo -e "\e[36mMauvaise syntaxe de la réponse (y ou n)"
         echo -e "\e[32m"
@@ -118,7 +118,7 @@ echo -e "\e[32m"
 echo ""
 read -p "Souhaitez-vous un serveur sur RocketMod4 ou RockerMod5 (rm4 ou rm5) ?" servertype
 
-while [ -z "$servertype" ] && [ "$servertype" != 'rm4' ] && [ "$servertype" != 'rm5' ]
+while [ -z "$servertype" && "$servertype" != 'rm4' && "$servertype" != 'rm5' ]
 do
         echo -e "\e[36mMauvaise syntaxe de la réponse (rm4 ou rm5)"
         echo -e "\e[32m"
