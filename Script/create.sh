@@ -128,11 +128,11 @@ read -p "Souhaitez-vous un serveur sur RocketMod4 ou RockerMod5 (rm4 ou rm5) ?" 
 
 while [ -z "$servertype" ] || [ "$servertype" != 'rm4' ] || [ "$servertype" != 'rm5' ]
 do
-        if [ "$yet" = "rm4" ]
+        if [ "$servertype" = "rm4" ]
             then
             break
         fi
-        if [ "$yet" = "rm5" ]
+        if [ "$servertype" = "rm5" ]
             then
             break
         fi
