@@ -3,7 +3,7 @@
 erreur1='Contactez Julien sur Github via ce lien : https://github.com/julien040/Unturned-Linux'
 
 #Premier message de Bienvenue
-echo -e "\e[34mBonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned."
+echo -e "\e[91mBonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned."
 echo ""
 echo "Ce script est crée par le serveur LakoyaRP dans sa démarche d'aider la communauté Unturned"
 echo ""
@@ -22,8 +22,8 @@ if [[ $EUID -ne 0 ]]; then
    sleep 2s
    exit 1
 fi
-
-sleep 5s
+clear
+sleep 10s
 echo "Vous allez être guidé pas à pas du début de l'installation jusqu'à la finalisation du serveur"
 echo ""
 echo "En cas de problème, merci de contacter Julien via https://github.com/julien040/Unturned-Linux"
@@ -31,7 +31,7 @@ echo ""
 echo -e "\e[36mDans ce script, les indications seront en bleus, \e[32met les questions en verts"
 
 #Attente afin de lire les messages
-sleep 6s
+sleep 8s
 clear
 #Avertissement
 echo -e "Vous allez répondre à une suite de questions afin de personnaliser le serveur."
@@ -39,7 +39,7 @@ echo ""
 echo "Répondez y correctement afin de ne pas créer de bugs ; )"
 
 #Attente afin de lire les messages
-sleep 4s
+sleep 6s
 clear
 #Installation des dépendences ou non
 echo "\e[36mChoisissez bien y ou n car le script pourrait être bloqué à cause de ça"
@@ -48,8 +48,16 @@ echo -e "\e[32mQuestion :"
 echo ""
 read -p "Avez vous déjà installé un serveur Unturned sur cette machine ? (y ou n) :" yet
 
-while [ -z "$yet" && "$yet" != 'y' && "$yet" != 'n' ]
+while [ -z "$yet" ] || [ "$yet" != 'y' ] || [ "$yet" != 'n' ]
 do
+        if [ "$yet" = "n" ]
+            then
+            break
+        fi
+        if [ "$yet" = "y" ]
+            then
+            break
+        fi
         echo -e "\e[36mMauvaise syntaxe de la réponse (y ou n)"
         echo -e "\e[32m"
         echo ""
@@ -118,8 +126,16 @@ echo -e "\e[32m"
 echo ""
 read -p "Souhaitez-vous un serveur sur RocketMod4 ou RockerMod5 (rm4 ou rm5) ?" servertype
 
-while [ -z "$servertype" && "$servertype" != 'rm4' && "$servertype" != 'rm5' ]
+while [ -z "$servertype" ] || [ "$servertype" != 'rm4' ] || [ "$servertype" != 'rm5' ]
 do
+        if [ "$yet" = "rm4" ]
+            then
+            break
+        fi
+        if [ "$yet" = "rm5" ]
+            then
+            break
+        fi
         echo -e "\e[36mMauvaise syntaxe de la réponse (rm4 ou rm5)"
         echo -e "\e[32m"
         read -p 'Merci de correctement répondre à la question' servertype
