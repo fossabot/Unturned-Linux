@@ -2,22 +2,24 @@
 
 erreur1='Contactez Julien sur Github via ce lien : https://github.com/julien040/Unturned-Linux'
 #Premier message de Bienvenue
-echo -e "\e[96mBonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned."
+echo -e "\e[36mBonjour, et bienvenue dans le script d'installation de serveur Linux sur Unturned."
 
 if [ -d $PWD/Unturned_Headless_Data ]
     then
     echo "Le serveur est déjà installé dans ce dossier, je vous invite donc à le mettre à jour"
     echo "Redirection vers le script de mise à jour dans 10s"
+    sleep 10s
+    
     ./update-server.sh
-
 fi
+
 sleep 2s
 echo "Vous allez être guidé pas à pas du début de l'installation jusqu'à la finalisation du serveur"
 echo "En cas de problème, merci de contacter Julien via https://github.com/julien040/Unturned-Linux"
 
 #Attente afin de lire les messages
 sleep 6s
-
+clear
 #Avertissement
 echo "Vous allez répondre à une suite de questions afin de personnaliser le serveur."
 echo "Répondez y correctement afin de ne pas créer de bugs ; )"
@@ -35,14 +37,9 @@ if [ "$yet" = "n" ]
     echo "Puisque c'est la première installation d'un serveur Unturned, le script va installer les dépendences"
     apt-get update
     apt-get upgrade -y
-    dpkg --add-architecture i386
-    deb http://archive.ubuntu.com/ubuntu xenial main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu xenial-updates main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu xenial-security main universe multiverse
-    add-apt-repository multiverse
-    apt-get update
     apt-get install -y unzip tar wget coreutils lib32gcc1 libgdiplus mono-complete screen steamcmd
     echo "Dépendences installées"
+    sleep 2s
 elif [ "$yet" = "y" ]
     then
     echo "Malgré que vous avez déjà installé Unturned sur cette machine, le script va mettre à jour les dépendences"
@@ -95,7 +92,7 @@ echo "Suivant la vitesse de votre connexion internet, cela peut prend plus ou mo
 sleep 2s
 
 #Téléchargement Steam
-steamcmd +login anonymous +force_install_dir $folder +app_update 1110390 validate +exit
+steamcmd.sh +login anonymous +force_install_dir $folder +app_update 1110390 validate +exit
 
 echo "Steam vient de finir de télécharger Unturned !"
 echo "Le script va maintenant installer RocketMod !"
