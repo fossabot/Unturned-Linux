@@ -8,7 +8,7 @@ echo ""
 echo "Ce script est crée par le serveur LakoyaRP dans sa démarche d'aider la communauté Unturned"
 echo ""
 echo "Merci à Trojaner qui a aidé sur la partie RocketMod5, et qui permet donc que le script existe"
-if [ -d $PWD/Unturned_Headless_Data ]
+if [ -d "$PWD"/Unturned_Headless_Data ]
     then
     echo "Le serveur est déjà installé dans ce dossier, je vous invite donc à le mettre à jour"
     echo "Redirection vers le script de mise à jour dans 10s"
@@ -81,13 +81,13 @@ echo -e "\e[36mChoisissez dans quel dossier installer le serveur Unturned ?(si a
 echo -e "\e[32m"
 echo ""
 read -p "Indiquez le chemin complet du dossier sinon Unturned s'installera dans le dossier actuel :" folder
-if [ -d $folder ]
+if [ -d "$folder" ]
     then
     echo -e "\e[36mLe serveur sera installé dans $folder"
 
 else 
-    mkdir $folder
-    if [ -d $folder ]
+    mkdir "$folder"
+    if [ -d "$folder" ]
         then
         echo -e "\e[36mLe script a réussi à créer le dossier. Le serveur sera donc installé dans $folder"
     else
@@ -115,6 +115,7 @@ done
 clear
 echo "(Attention : RocketMod 5 est instable pour le moment)"
 echo -e "\e[32m"
+echo ""
 read -p "Souhaitez-vous un serveur sur RocketMod4 ou RockerMod5 (rm4 ou rm5) ?" servertype
 
 while [ -z "$servertype" ] && [ "$servertype" != 'rm4' ] && [ "$servertype" != 'rm5' ]
@@ -139,25 +140,27 @@ else
 fi
 
 #Début de l'installation
+echo ""
 echo -e "\e[36mLe script va installer Unturned dans le dossier $folder"
 sleep 2s
 echo ""
 echo -e "\e[36mSuivant la vitesse de votre connexion internet, cela peut prend plus ou moins de temps"
+echo ""
 sleep 2s
 
-cd $folder
+cd "$folder"
 #Téléchargement Steam
 curl -s https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -vxz
 chmod 777 ./steamcmd.sh
-./steamcmd.sh +login anonymous +force_install_dir $folder +app_update 1110390 +@sSteamCmdForcePlatformBitness 64 validate +exit
+./steamcmd.sh +login anonymous +force_install_dir "$folder" +app_update 1110390 +@sSteamCmdForcePlatformBitness 64 validate +exit
 
 #Vérification du téléchargement de Steam
-if [ -d $folder/Unturned_Headless_Data]
+if [ -d "$folder"/Unturned_Headless_Data ]
     then
     echo -e "\e[36mSteam vient de finir de télécharger Unturned !"
     echo "Le script va maintenant installer RocketMod !"
     cp -f $folder/linux64/steamclient.so $folder/Unturned_Headless_Data/Plugins/x86_64/steamclient.so
-    cd $folder
+    cd "$folder" || exit
     cp linux32/steamclient.so /lib
     cp linux64/steamclient.so /lib64
 
@@ -166,9 +169,10 @@ else
     echo "$erreur1"
     sleep 6s
     exit
+fi
 
 sleep 5s
-cd $folder
+cd "$folder"
 wget https://raw.githubusercontent.com/julien040/Unturned-Linux/master/Script/run-rm5.sh
 chmod 777 rum-rm5.sh
 
@@ -207,13 +211,13 @@ fi
 
 #Démarrage du serveur
 clear
-cd $folder
+cd "$folder"
 if [ "$servertype" = "rm4" ]
     then
     echo -e "\e[36mDémarrage du serveur"
     echo "Désormais, pour démarrer le serveur, faites start.sh nomduserveur"
     sleep 4s
-    ./start.sh $nameserver
+    ./start.sh "$nameserver"
     exit 0
 
 elif [ "$servertype" = "rm5" ]
@@ -221,7 +225,7 @@ elif [ "$servertype" = "rm5" ]
     echo -e "\e[36mDémarrage du serveur"
     echo "Désormais, pour démarrer le serveur, faites run-rm5 nomduserveur"
     sleep 4s
-    ./run-rm5.sh $nameserver
+    ./run-rm5.sh "$nameserver"
     exit 0
 fi
 exit
